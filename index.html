@@ -67,10 +67,54 @@
 		<h4>What is a Quantile plot? What is it good for.</h4>
 		<p>A quantile plot is a graph of the CDF with the x and y axis switched. This makes it easy to see the value the data has at a certain quantile or procentage</p>
 
-		<h4></h4>
+		<h4>How is a Probablity plot defined? What is it useful for? Have you ever seen one before?</h4>
+		<p>In a probability plot the cumulative distribution of the data is plotted against a theoretical cumulative distribution. If the distribution of the data matches the theoretical distribution the plotted points will be on a line. This makes it easy to test if the data follows the distribution in question. We have newer encounterd one before but are familiar with the similiar qq-plot.</p>
+
+		<h4>One of the reasons I like DAOST is that Janert is so suspicious of mean, median, and related summary statistics. Explain why one has to be careful when using those - and why visualization of the full data is always better.</h4>
+		<p>Relying only on summary statistics can lead to missing important stuctures in the data and thereby getting a false impression of the data. A good example of this is Anscombe's quartet that shows four datasets with identical summary statistics but when plotted are revealed to be structually very different.</p>
+
+		<h4> When are box plots most useful?</h4>
+		<p>Boxplots are most usefull when comparing several distributions as it gives a quick and easy overview of the data. The boxplots emphasizes the quantiales and the spread of the data and is a easy way to spot potential outliers</p>
+
+		<h4> Are violin plots better or worse than box plots? Why?</h4>
+		<p>Violing plots include the same data as the boxplot but is then overlaid with a KDE and as such inherently contain more information. In this way it can be seen as better as it gives a more condensed view of the data. I would personally mean that it would paint a clearer picture to make a boxplot and histograms or KDE's instead of a violin plot. The disadvantage of the violin plot is that the KDE is a very condensed and has trouble showing more than very general structures in the data.   </p>
 
 
 		<h2>Part 2: DAOST Chapter 3 Questions</h2>
+
+		<h4>Looking at Fig 3-1, Janert writes "the data itself shows clearly that the amount of random noise in the data is small". What do you think his argument is?</h4>
+
+		<p>The data points in figure 3-1 appears to very clearly follow a curve. The plot almost begs your eyes to draw a line between the points. If there was any significant amount of noise present the points wouldn't appear to lie on curve or this curve wouldn't neatly go trough all of the points.</p>
+
+		<h4>Can you think of a real-world example of a multivariate relationship like the one in Fig 3-3 (lower right panel)?</h4>
+		<p></p>
+
+		<h4>What are the two methods Janert metions for smoothing noisy data? Can you think of other ones?</h4>
+		<p>The book mentions the two methods: weighted splines and locally weighted regression (LOESS). </p>
+
+		<h4>What are residuals? Why is it a good idea to plot the residuals of your fit?</h4>
+		<p>Residuales are difference between your fit or model and your data. Plotting the residuals reveals any potential structure in the residuals, which indicate that there is structure in the data the the fit or model doesn't account for. </p>
+
+		<h4>Explain in your own words the point of the smooth tube in figure 3-7.</h4>
+		<p>The smooth tube gives a visual representaion of the variance in the data and how it changes.</p>
+
+		<h4>What kind of relationships will a semi-log plot help you discover?</h4>
+		<p>A semi-log plot will display a exponential relationship as a straight line as is therefor usefull in discovering this kind of relationship.</p>
+
+		<h4>What kind of relationships will loglog plots help you discover?</h4>
+		<p>A log-log plot will display a power relationship as a straight line as is therefor usefull in discovering this kind of relationship.</p>
+
+		<h4>What is banking and what element from our visual system does it use to help us see patterns? What are potential problems with banking?</h4>
+		<p>The human eye is best at detecting changing in a curves slope when the slope is at a approximate 45 degree angle. Banking is changing the aspect ratio to make the most slopes an 45 degree angle on the screen. This can make it easier to see changes in the slope but might make something else harder to see, such as in the figure 3-12 where the it has been made much harder to see the difference in height of the spikes.</p>
+
+		<h4>I think figure 3-14 makes an important point about linear fits that is rarely made. What is it?</h4>
+		<p>The best fit to the data might change depending on the which is considered the input and what is considered the response variable.</p>
+
+		<h4>Summarize the discussion of Graphical Analysis and Presentation Graphics on pp. 68-69 in your own words.</h4>
+		<p>A plot is made for one of two reasons. The first is as a part of an analysis of data and the plot is made to give yourself an better understanding of the data. Here any extra labels and work to make the plot pretty should be avoided, the empasis should be on ease of use instead. The second reason is as a part of a presentation to someone that isn't familiar with the data. Here the emphasis is the reverse, you want the plot to be as easily understood as possible and wants as explanation as is needed.</p>
+
+
+
 
 		<h2> Part 3: Viz 1</h2>
 		This is a reproduction of <a href="http://iquantny.tumblr.com/post/129373499164/this-is-quantifiably-the-best-month-to-go-to-the">http://iquantny.tumblr.com/post/129373499164/this-is-quantifiably-the-best-month-to-go-to-the</a>
@@ -449,7 +493,7 @@
 			<div class="Exercises" id = "part4">
 
 					<h2>Part 4: Viz 2</h2>
-					<p>hej</p>
+					<p>Click on legend text in legend to change view of data. Hold mouse over datapoints to get more information.</p>
 				</div>
 			
 
