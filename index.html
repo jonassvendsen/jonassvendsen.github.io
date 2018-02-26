@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Assignment 1</title>
 		<script type="text/javascript" src="d3.js"></script>
-		<link rel="stylesheet" href="style.css">
+		<!-- <link rel="stylesheet" href="style.css"> -->
 		<style type="text/css">
 			.linem {
 				fill:none;
@@ -47,9 +47,65 @@
 			div.Exercises {
 				background-color: white;
 			}
-			p { font-family: Helvetica, Arial, sans-serif;  }
-			h2 { font-family: Helvetica, Arial, sans-serif;  }
-			h4 { font-family: Helvetica, Arial, sans-serif;  }
+			p { font-family: Helvetica;  }
+			h2 { font-family: Helvetica;  }
+			h4 { font-family: Helvetica;  }
+			button {
+			     background-color: #4CAF50; /* Green */
+				    border: none;
+				    color: white;
+				    padding: 16px 32px;
+				    text-align: center;
+				    text-decoration: none;
+				    display: inline-block;
+				    font-size: 16px;
+				    margin: 4px 2px;
+				    -webkit-transition-duration: 0.4s; /* Safari */
+				    transition-duration: 0.4s;
+				    cursor: pointer;
+			}
+			.button1 {
+			    background-color: white; 
+			    color: black; 
+			    border: 2px solid #f44242;
+			}
+
+			.button1:hover {
+			    background-color: #f44242;
+			    color: white;
+			}
+
+			.button2 {
+			    background-color: white; 
+			    color: black; 
+			    border: 2px solid #4CAF50;
+			}
+
+			.button2:hover {
+			    background-color: #4CAF50;
+			    color: white;
+			}
+
+			.button3 {
+			    background-color: white; 
+			    color: black; 
+			    border: 2px solid #ef8181;
+			}
+
+			.button3:hover {
+			    background-color: #ef8181;
+			    color: white;
+			}
+
+			.button4 {
+			    background-color: white;
+			    color: black;
+			    border: 2px solid #9ce291;
+			}
+			.button4:hover {
+			    background-color: #9ce291;
+			    color: white;
+			}
 		</style>
 		<meta charset="utf-8">>
 	</head>
@@ -128,10 +184,10 @@
 				<p><p>As part of a homework assignment, I ask my students at Pratt to go out and chart something of interest to them, and <a href="https://t.umblr.com/redirect?z=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fkvsavarese&amp;t=NmE2YmYyYjU4NTI3MTFhYWFiMWE1ZjFhNzc1NmUzMmE0ZDQ4OGM2NSwxeHM2a1phNg%3D%3D&amp;b=t%3A5jlxwUw4OZ-2SbgNDPgKMQ&amp;p=http%3A%2F%2Fiquantny.tumblr.com%2Fpost%2F129373499164%2Fthis-is-quantifiably-the-best-month-to-go-to-the&amp;m=1">Katherine Savarese</a> came back with a simple chart about farmers markets that I loved- it inspired this post.</p><p>You probably know that farmers markets are a staple across <a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.grownyc.org%2Ffiles%2Fgmkt%2Fmap.pdf&amp;t=MGM4YmRjZjQ2ZmFmYzBiYmMzMmY5NDU2MTdiNzMzMmYyOWQ5YjQ2ZSwxeHM2a1phNg%3D%3D&amp;b=t%3A5jlxwUw4OZ-2SbgNDPgKMQ&amp;p=http%3A%2F%2Fiquantny.tumblr.com%2Fpost%2F129373499164%2Fthis-is-quantifiably-the-best-month-to-go-to-the&amp;m=1">all five boroughs</a> of New York City, but September happens to be a very special month.  Why is that? &nbsp;Well, it turns out September is the month with the most unique types of fresh produce- forty three to be exact.</p><p>To show the current offerings, we charted how many types of fruits and vegetables are available by month, and showed if they were fresh or from storage.&nbsp;</p>
 
 				<div id = "buttons">
-					<button id = "but1", type="button">Fresh Fruit</button>
-					<button id = "but2", type="button">Fresh Vegetables</button>
-					<button id = "but3", type="button">Storage Fruit</button>
-					<button id = "but4", type="button">Storage Vegetables</button>
+					<button id = "but1", type="button", class="button button1">Fresh Fruit</button>
+					<button id = "but2", type="button", class="button button2">Fresh Vegetables</button>
+					<button id = "but3", type="button", class="button button3">Storage Fruit</button>
+					<button id = "but4", type="button", class="button button4">Storage Vegetables</button>
 				</div>
 				<div id = "plotpart3"></div>
 
@@ -140,7 +196,7 @@
 					var width = 800;
 					var height = 300;
 					var padding = 40;
-					var color = "rgb(255,0,0)"
+					var color = "rgb(244, 66, 66)"
 					
 					
 					var margin = {top: 40, right: 20, bottom: 30, left: 50},
@@ -313,7 +369,7 @@
             					yAxis.scale(yScale);
             					svg.select(".y").call(yAxis);
 
-            					color = "rgb(255,0,0)";
+            					color = "rgb(244, 66, 66)";
 
 
 
@@ -331,7 +387,7 @@
 					            return height-yScale(d.freshFruit);
 					            })
 					            .attr("fill", function(d) { // <-- Down here!
-					            return "rgb(255, 0, 0)";
+					            return color;
 					            });
 
 					            svg.selectAll("text")
@@ -359,7 +415,7 @@
             					yAxis.scale(yScale);
             					svg.select(".y").call(yAxis);
 
-            					color = "rgb(0,255,0)";
+            					color = "#4CAF50";
 
             					svg.selectAll("rect")
 					            .data(dataset)
@@ -375,7 +431,7 @@
 					            return height-yScale(d.freshVegetable);
 					            })
 					            .attr("fill", function(d) { // <-- Down here!
-					            return "rgb(0, 255, 0)";
+					            return color;
 					            });
 					            svg.selectAll("text")
 					            .data(dataset)
@@ -402,7 +458,7 @@
             					yAxis.scale(yScale);
             					svg.select(".y").call(yAxis);
 
-            					color = "rgb(255, 100, 100)";
+            					color = "#ef8181";
 
             					svg.selectAll("rect")
 					            .data(dataset)
@@ -418,7 +474,7 @@
 					            return height-yScale(d.storageFruit);
 					            })
 					            .attr("fill", function(d) { // <-- Down here!
-					            return "rgb(255, 100, 100)";
+					            return color;
 					            });
 					            svg.selectAll("text")
 					            .data(dataset)
@@ -445,7 +501,7 @@
             					yAxis.scale(yScale);
             					svg.select(".y").call(yAxis);
 
-            					color = "rgb(100, 255, 100)";
+            					color = "#9ce291";
 
             					svg.selectAll("rect")
 					            .data(dataset)
@@ -461,7 +517,7 @@
 					            return height-yScale(d.storageVegetable);
 					            })
 					            .attr("fill", function(d) { // <-- Down here!
-					            return "rgb(100, 255, 100)";
+					            return color;
 					            });
 					            svg.selectAll("text")
 					            .data(dataset)
