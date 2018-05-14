@@ -106,14 +106,15 @@
     <script type="text/javascript">
 
       //Width and height
-      margin1 = {top: 20, right: 60, bottom: 50, left: 50}
+      margin1 = {top: 50, right: 60, bottom: 50, left: 50}
       margin2 = {top: 20, right: 20, bottom: 30, left: 50}
 
       var w = 1000;
       var h2 = 800;
-      var h1 = 200;
+      var h1 = 230;
       var s  = 150;
 
+        var t = 75;
       var parseTime  = d3.timeParse("%j");
 
       //var colours = [ "#fdf842","#fdf961","#fdfa81","#fefba0","#fefcc0","#fefddf","#ffffff","#ffffff","#f9fafe","#f4f6fd","#eff2fd","#eaeefc","#e5eafb","#dfe6fb","#dae2fa","#d5def9","#d0daf9","#cbd6f8","#c5d2f7","#c0cef7","#bbcaf6","#b6c6f5","#b1c1f5","#abbdf4","#a6b9f3","#a1b5f2","#9cb1f2","#97adf1","#92a9f1","#8ca5f0","#87a1ef","#829def","#7d99ee","#7895ed","#7291ed","#6d8dec","#6888eb","#6384eb","#5e80ea","#587ce9","#5378e9","#4e74e8","#4970e7","#446ce7","#3e68e6","#3964e5","#3460e5","#2f5ce4","#2a58e3","#2554e3"];
@@ -293,7 +294,7 @@
                   .attr("transform", "translate(" + margin1.left + ",  0)")
                 .append("text")
                   .attr("fill", "#ffe100")
-                  .attr("y", 0)
+                  .attr("y", margin1.top - 20)
                   .attr("x",40)
                   .attr("dy", "0.71em")
                   .attr("font-size","15px")
@@ -305,7 +306,7 @@
                   .attr("transform", "translate(" + (w - margin1.right ) + ",  0)")  
                 .append("text")
                   .attr("fill", "#040bf9")
-                  .attr("y", 0)
+                  .attr("y", margin1.top  - 20)
                   .attr("x", 30)
                   .attr("dy", "0.71em")
                   .attr("font-size","15px")
@@ -349,16 +350,40 @@
                   .attr("dy", "1em")
                   .style("text-anchor", "middle")
                   .text("NYC Boroughs")
-                  .attr("font-size",20);
+                  .attr("font-size",30);
 
                   svg2.append("text")
-                  .attr("y", 50 )
+                  .attr("y", 75 + t )
                   .attr("x",(0))
                   .attr("dy", "1em")
                   .style("text-anchor", "left")
-                  .text("Investigate the distribution of Uber and Taxi rides in your favorite location of New York City. Anything blue is above average in favor of Uber and yellow zones mean taxis dominates.")
-                  .attr("font-size",10);
-          
+                  .text("Investigate the distribution of Uber and Taxi rides ")
+                  .attr("font-size",15);
+
+                  svg2.append("text")
+                  .attr("y", 95 +t )
+                  .attr("x",(0))
+                  .attr("dy", "1em")
+                  .style("text-anchor", "left")
+                  .text("in your favorite location of New York City. ")
+                  .attr("font-size",15);
+
+                  svg2.append("text")
+                  .attr("y", 115  + t)
+                  .attr("x",(0))
+                  .attr("dy", "1em")
+                  .style("text-anchor", "left")
+                  .text("Anything blue is above average in favor ")
+                  .attr("font-size",15);
+
+                  svg2.append("text")
+                  .attr("y", 135 +t )
+                  .attr("x",(0))
+                  .attr("dy", "1em")
+                  .style("text-anchor", "left")
+                  .text("of Uber and yellow zones mean taxis dominates.")
+                  .attr("font-size",15);
+
           svg.append("g")
                     .call(brush)
                     .call(brush.move, [5, 20].map(x));
