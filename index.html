@@ -344,11 +344,19 @@
 
 
                   svg2.append("text")
-              .attr("y", 15 )
+                  .attr("y", 15 )
                   .attr("x",(w/2))
                   .attr("dy", "1em")
                   .style("text-anchor", "middle")
-                  .text("NYC Boroughs")
+                  .text("NYC Boroughs - ")
+                  .attr("font-size",20);
+
+                  svg2.append("text")
+                  .attr("y", 30 )
+                  .attr("x",(0))
+                  .attr("dy", "1em")
+                  .style("text-anchor", "left")
+                  .text("Investigate the distribution of Uber and Taxi rides in your favorite location of New York City. Anything blue is above average in favor of Uber and yellow zones mean taxis dominates.")
                   .attr("font-size",20);
           
           svg.append("g")
