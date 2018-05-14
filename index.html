@@ -1,1097 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Assignment 1</title>
-		<script type="text/javascript" src="d3.js"></script>
-		<!-- <link rel="stylesheet" href="style.css"> -->
-		<style type="text/css">
-			.linem {
-				fill:none;
-				stroke-width: 0.5;
-				stroke: teal;
-			}
-			.linef {
-				fill:none;
-				stroke-width: 0.5;
-				stroke: red;
-			}
-			.legend rect {
-				fill:white;
-				stroke:black;
-				opacity:0.8;
-			}
-			div.tooltip {
-				position: absolute;
-				width: 60px;
-				height: auto;
-				padding: 5px;
-				background-color: white;
-				-webkit-border-radius: 5px;
-				-moz-border-radius: 10px;
-				border-radius: 10px;
-				-webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
-				-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-				box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-				pointer-events: none;
-				}
-			div.tooltip.hidden {
-				display: none;
-				}
-			#tooltool {
-				margin: -10;
-				font-family: sans-serif;
-				font-size: 12px;
-				line-height: 16px;
-				}
-			div.Exercises {
-				background-color: white;
-			}
-			p { font-family: Helvetica;  }
-			h2 { font-family: Helvetica;  }
-			h4 { font-family: Helvetica;  }
-			button {
-			     background-color: #4CAF50; /* Green */
-				    border: none;
-				    color: white;
-				    padding: 16px 32px;
-				    text-align: center;
-				    text-decoration: none;
-				    display: inline-block;
-				    font-size: 16px;
-				    margin: 4px 2px;
-				    -webkit-transition-duration: 0.4s; /* Safari */
-				    transition-duration: 0.4s;
-				    cursor: pointer;
-			}
-			.button1 {
-			    background-color: white; 
-			    color: black; 
-			    border: 2px solid #f44242;
-			}
-
-			.button1:hover {
-			    background-color: #f44242;
-			    color: white;
-			}
-
-			.button2 {
-			    background-color: white; 
-			    color: black; 
-			    border: 2px solid #4CAF50;
-			}
-
-			.button2:hover {
-			    background-color: #4CAF50;
-			    color: white;
-			}
-
-			.button3 {
-			    background-color: white; 
-			    color: black; 
-			    border: 2px solid #ef8181;
-			}
-
-			.button3:hover {
-			    background-color: #ef8181;
-			    color: white;
-			}
-
-			.button4 {
-			    background-color: white;
-			    color: black;
-			    border: 2px solid #9ce291;
-			}
-			.button4:hover {
-			    background-color: #9ce291;
-			    color: white;
-			}
-		</style>
-		<meta charset="utf-8">>
-	</head>
-	<body>
-		<h2>Part 1: DAOST Chapter 2 Questions</h2>
 
-		<h4>Explain in your own words the point of the jitter plot</h4>
-		<p>The point of the jitter plot is to make datapoints that are very close to each other visible by displacing the points vertically.</p>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Uber vs. Taxi in NYC</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+    <!-- Video player -->
+    <link href="https://vjs.zencdn.net/6.9.0/video-js.css" rel="stylesheet">
+    <!--D3  -->
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script type="text/javascript" src="/d3.js"></script>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Uber vs. Taxi in NYC </a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Interactive Vizualization</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+
+    <!-- Video player -->
+          <center>
+          <video id="my-video" class="video-js vjs-big-play-centered"  controls preload="auto" width="640" height="360" poster="bgvideo.jpg" data-setup="{}">
+          <source src="projectA.mp4" type='video/mp4'>
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+          </p>
+          </video>
+          </center>
+
+          <script src="https://vjs.zencdn.net/6.9.0/video.js"></script>
+
+        <!-- Titlesection -->
+        <br>
+        <br>
+        <h2 class="font-weight-light mb-0">A data story of the transportation in the biggest city in the world.</h2>
+      </div>
+      <style type="text/css">
+     
+      .taxiline {
+        fill: none;
+        stroke: #ffe100;
+        stroke-width: 2px;
+      }
+      .uberline {
+        fill: none;
+        stroke: #040bf9;
+        stroke-width: 2px;
+      }
+            
+    </style>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Interactive Vizualization</h2>
+        <div id="chart"></div>
+    <div id="map"></div>
 
-		<h4>Explain in your own words the point of figure 2-3</h4>
-		<p>Figure 2-3 shows that for the same data, two histograms with the same bin width can paint a very different picture depending on where the bins are anchored.</p>
 
-		<h4>When can KDEs be misleading?</h4>
-		<p>Kernel density estimates have a tendecy to make the impresseion of data where there are none. For example in figure 2-4 the tails of the curve extends beyond the 100 months mark. This gives the expression that there have been presidents that have been in office for 100 months, which there are no one that has (only one have served more than 96 months and he served 145 months).</p>
+    <script type="text/javascript">
 
-		<h4>Janert writes "[CDFs] have less intuitive appeal than histograms or KDEs". What does he mean by that?</h4>
-		<p>A histrogram of a KDE requires very little explaining to understand even for the less technical inclined. A CDF on the other hand require a lot more explaining to understand. The average person that doesn't work with data for a living will most likely have trouble understanding what the plot is trying to show them.</p>
+      //Width and height
+      margin1 = {top: 20, right: 60, bottom: 50, left: 50}
+      margin2 = {top: 20, right: 20, bottom: 30, left: 50}
 
-		<h4>What is a Quantile plot? What is it good for.</h4>
-		<p>A quantile plot is a graph of the CDF with the x and y axis switched. This makes it easy to see the value the data has at a certain quantile or procentage</p>
+      var w = 1000;
+      var h2 = 800;
+      var h1 = 200;
+      var s  = 150;
 
-		<h4>How is a Probablity plot defined? What is it useful for? Have you ever seen one before?</h4>
-		<p>In a probability plot the cumulative distribution of the data is plotted against a theoretical cumulative distribution. If the distribution of the data matches the theoretical distribution the plotted points will be on a line. This makes it easy to test if the data follows the distribution in question. We have newer encounterd one before but are familiar with the similiar qq-plot.</p>
+      var parseTime  = d3.timeParse("%j");
 
-		<h4>One of the reasons I like DAOST is that Janert is so suspicious of mean, median, and related summary statistics. Explain why one has to be careful when using those - and why visualization of the full data is always better.</h4>
-		<p>Relying only on summary statistics can lead to missing important stuctures in the data and thereby getting a false impression of the data. A good example of this is Anscombe's quartet that shows four datasets with identical summary statistics but when plotted are revealed to be structually very different.</p>
+      //var colours = [ "#fdf842","#fdf961","#fdfa81","#fefba0","#fefcc0","#fefddf","#ffffff","#ffffff","#f9fafe","#f4f6fd","#eff2fd","#eaeefc","#e5eafb","#dfe6fb","#dae2fa","#d5def9","#d0daf9","#cbd6f8","#c5d2f7","#c0cef7","#bbcaf6","#b6c6f5","#b1c1f5","#abbdf4","#a6b9f3","#a1b5f2","#9cb1f2","#97adf1","#92a9f1","#8ca5f0","#87a1ef","#829def","#7d99ee","#7895ed","#7291ed","#6d8dec","#6888eb","#6384eb","#5e80ea","#587ce9","#5378e9","#4e74e8","#4970e7","#446ce7","#3e68e6","#3964e5","#3460e5","#2f5ce4","#2a58e3","#2554e3"];
 
-		<h4> When are box plots most useful?</h4>
-		<p>Boxplots are most usefull when comparing several distributions as it gives a quick and easy overview of the data. The boxplots emphasizes the quantiales and the spread of the data and is a easy way to spot potential outliers</p>
+      var colours = ["#ffe100","#f7e72e","#f0ed5d","#e9f48c","#ffffff","#f2f2fe","#e5e6fe","#d9dafe","#cccefd","#c0c2fd","#b3b5fd","#a7a9fc","#9a9dfc","#8e91fc","#8185fc","#7478fb","#686cfb","#5b60fb","#4f54fa","#4248fa","#363bfa","#292ff9","#1d23f9","#1017f9","#040bf9"]
 
-		<h4> Are violin plots better or worse than box plots? Why?</h4>
-		<p>Violing plots include the same data as the boxplot but is then overlaid with a KDE and as such inherently contain more information. In this way it can be seen as better as it gives a more condensed view of the data. I would personally mean that it would paint a clearer picture to make a boxplot and histograms or KDE's instead of a violin plot. The disadvantage of the violin plot is that the KDE is a very condensed and has trouble showing more than very general structures in the data.   </p>
+               var heatmapColour = d3.scaleLinear()
+        .domain(d3.range(0, 1, 1.0 / (colours.length - 1)))
+        .range(colours);
 
+      //Define map projection
+      var projection = d3.geoMercator()
+                   .center([-74.10, 40.70])
+                   //.center([-73.94, 40.70])
+                    .scale(60000)
+                    .translate([(w) / 2 -100, (h2)/2 + 1]);
+      //Define path generator
+      var path = d3.geoPath()
+               .projection(projection);
 
-		<h2>Part 2: DAOST Chapter 3 Questions</h2>
 
-		<h4>Looking at Fig 3-1, Janert writes "the data itself shows clearly that the amount of random noise in the data is small". What do you think his argument is?</h4>
+      var parseTime = d3.timeParse("%d-%m-%y");
 
-		<p>The data points in figure 3-1 appears to very clearly follow a curve. The plot almost begs your eyes to draw a line between the points. If there was any significant amount of noise present the points wouldn't appear to lie on curve or this curve wouldn't neatly go trough all of the points.</p>
+      var y = d3.scaleLinear()
+      .rangeRound([h1 - margin1.bottom, margin1.top])
+        //.domain([0,26571]);
+        .domain([0,508710]);
 
-		<h4>Can you think of a real-world example of a multivariate relationship like the one in Fig 3-3 (lower right panel)?</h4>
-		<p></p>
+        var y2 = d3.scaleLinear()
+      .rangeRound([h1 - margin1.bottom, margin1.top])
+        //.domain([0,26571]);
+        .domain([0,136133]);
 
-		<h4>What are the two methods Janert metions for smoothing noisy data? Can you think of other ones?</h4>
-		<p>The book mentions the two methods: weighted splines and locally weighted regression (LOESS). </p>
+        var procent = d3.scaleLinear()
+      .rangeRound([300, 1])
+        //.domain([0,26571]);
+        .domain([0,1]);
+      
 
-		<h4>What are residuals? Why is it a good idea to plot the residuals of your fit?</h4>
-		<p>Residuales are difference between your fit or model and your data. Plotting the residuals reveals any potential structure in the residuals, which indicate that there is structure in the data the the fit or model doesn't account for. </p>
+      //Create SVG element
+            
+      var svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h1);
 
-		<h4>Explain in your own words the point of the smooth tube in figure 3-7.</h4>
-		<p>The smooth tube gives a visual representaion of the variance in the data and how it changes.</p>
+      var x = d3.scaleLinear()
+              .rangeRound([margin1.left, w-margin1.right])
+              .domain([ 1 , 181 ]);
 
-		<h4>What kind of relationships will a semi-log plot help you discover?</h4>
-		<p>A semi-log plot will display a exponential relationship as a straight line as is therefor usefull in discovering this kind of relationship.</p>
+              
+       var xdate = d3.scaleTime()
+              .rangeRound([margin1.left, w-margin1.right])
+              .domain([ parseTime("1-1-15") , parseTime("30-6-15") ]);
 
-		<h4>What kind of relationships will loglog plots help you discover?</h4>
-		<p>A log-log plot will display a power relationship as a straight line as is therefor usefull in discovering this kind of relationship.</p>
+    
+      
+      var svg2 = d3.select("#map")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h2);
 
-		<h4>What is banking and what element from our visual system does it use to help us see patterns? What are potential problems with banking?</h4>
-		<p>The human eye is best at detecting changing in a curves slope when the slope is at a approximate 45 degree angle. Banking is changing the aspect ratio to make the most slopes an 45 degree angle on the screen. This can make it easier to see changes in the slope but might make something else harder to see, such as in the figure 3-12 where the it has been made much harder to see the difference in height of the spikes.</p>
+        
 
-		<h4>I think figure 3-14 makes an important point about linear fits that is rarely made. What is it?</h4>
-		<p>The best fit to the data might change depending on the which is considered the input and what is considered the response variable.</p>
+           d3.json("nyu_geojson.json", function(json) {
 
-		<h4>Summarize the discussion of Graphical Analysis and Presentation Graphics on pp. 68-69 in your own words.</h4>
-		<p>A plot is made for one of two reasons. The first is as a part of an analysis of data and the plot is made to give yourself an better understanding of the data. Here any extra labels and work to make the plot pretty should be avoided, the empasis should be on ease of use instead. The second reason is as a part of a presentation to someone that isn't familiar with the data. Here the emphasis is the reverse, you want the plot to be as easily understood as possible and wants as explanation as is needed.</p>
+            d3.csv("uber.csv", function(data) { 
+              uber = data; 
 
+              d3.csv("yellow.csv", function(data) { 
+                yellow = data;
 
+              
 
 
-		<h2> Part 3: Viz 1</h2>
-		This is a reproduction of <a href="http://iquantny.tumblr.com/post/129373499164/this-is-quantifiably-the-best-month-to-go-to-the">http://iquantny.tumblr.com/post/129373499164/this-is-quantifiably-the-best-month-to-go-to-the</a>
-		<br>
-		<h2><a href="http://iquantny.tumblr.com/post/129373499164/this-is-quantifiably-the-best-month-to-go-to-the" class="h2 title">This is Quantifiably the Best Month to go to the Farmers Market</a></h2>
-			
-				<p><p>As part of a homework assignment, I ask my students at Pratt to go out and chart something of interest to them, and <a href="https://t.umblr.com/redirect?z=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fkvsavarese&amp;t=NmE2YmYyYjU4NTI3MTFhYWFiMWE1ZjFhNzc1NmUzMmE0ZDQ4OGM2NSwxeHM2a1phNg%3D%3D&amp;b=t%3A5jlxwUw4OZ-2SbgNDPgKMQ&amp;p=http%3A%2F%2Fiquantny.tumblr.com%2Fpost%2F129373499164%2Fthis-is-quantifiably-the-best-month-to-go-to-the&amp;m=1">Katherine Savarese</a> came back with a simple chart about farmers markets that I loved- it inspired this post.</p><p>You probably know that farmers markets are a staple across <a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.grownyc.org%2Ffiles%2Fgmkt%2Fmap.pdf&amp;t=MGM4YmRjZjQ2ZmFmYzBiYmMzMmY5NDU2MTdiNzMzMmYyOWQ5YjQ2ZSwxeHM2a1phNg%3D%3D&amp;b=t%3A5jlxwUw4OZ-2SbgNDPgKMQ&amp;p=http%3A%2F%2Fiquantny.tumblr.com%2Fpost%2F129373499164%2Fthis-is-quantifiably-the-best-month-to-go-to-the&amp;m=1">all five boroughs</a> of New York City, but September happens to be a very special month.  Why is that? &nbsp;Well, it turns out September is the month with the most unique types of fresh produce- forty three to be exact.</p><p>To show the current offerings, we charted how many types of fruits and vegetables are available by month, and showed if they were fresh or from storage.&nbsp;</p>
+              var uberline = d3.line()
+              .x(function(d,i) { return x(i+1); })
+              .y(function(d,i) { return y2(Number(agg[i].agg_uber)); });
 
-				<div id = "buttons">
-					<button id = "but1", type="button", class="button button1">Fresh Fruit</button>
-					<button id = "but2", type="button", class="button button2">Fresh Vegetables</button>
-					<button id = "but3", type="button", class="button button3">Storage Fruit</button>
-					<button id = "but4", type="button", class="button button4">Storage Vegetables</button>
-				</div>
-				<div id = "plotpart3"></div>
-
-
-				<script type="text/javascript">
-					var width = 800;
-					var height = 300;
-					var padding = 40;
-					var color = "rgb(244, 66, 66)"
-					
-					
-					var margin = {top: 40, right: 20, bottom: 30, left: 50},
-				    width = width - margin.left - margin.right,
-				    height = height - margin.top - margin.bottom;
-
-					var dataset, xScale, yScale, line;  //Empty, for now
-
-					//Function for converting CSV values from strings to Dates and numbers
-					var rowConverter = function(d) {
-						return {
-							month:  d.month ,  
-							freshFruit: parseFloat(d.freshFruit), //Convert from string to float
-							freshVegetable: parseFloat(d.freshVegetable),
-							storageFruit: parseFloat(d.storageFruit),
-							storageVegetable: parseFloat(d.storageVegetable)
-						};
-					}
-
-
-					d3.csv("part3.csv", rowConverter, function(data) {
-
-						var dataset = data;
-
-
-						//Print data to console as table, for verification
-						console.table(dataset, ["month", "freshFruit", "freshVegetable", "storageFruit", "storageVegetable"]);
-
-						
-
-						var xScale = d3.scaleBand()
-				          .range([0, width])
-				          .domain(data.map(function(d) { return d.month; }))
-				          .padding(0.1);
-
-
-
-					
-
-						var yScale = d3.scaleLinear()
-						 				.domain([0, d3.max(dataset, function(d) { return d.freshFruit; })])
-						 				.range([ height ,0]);
-
-						
-						//Create SVG element
-						var svg = d3.select("#plotpart3")
-									.insert("svg",":first-child")
-									.attr("width", width + margin.left + margin.right)
-									.attr("height", (height + margin.top + margin.bottom))
-									.append("g")
-									.attr("transform", 
-        							  "translate(" + margin.left + "," + (margin.top ) + ")");
-
-
-						svg.selectAll("rect")
-					   .data(dataset)
-					   .enter()
-					   .append("rect")
-					   .attr("x", function(d, i) {
-					   		return xScale(d.month) ;
-					   })
-					   .attr("y", function(d) {
-					   		return  yScale(d.freshFruit) ;
-					   })
-					   .attr("width", xScale.bandwidth())
-					   .attr("height", function(d) {
-					   		return  height- yScale(d.freshFruit);
-					   })
-					   .attr("fill", function(d) {
-							return color;
-						}).on("mouseover", function(d) {
-							d3.select(this)
-							.attr("fill", "orange");
-							// var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
-							// var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
-
-							// svg.append("text")
-							// .attr("id", "tooltip")
-							// .attr("x", xPosition)
-							// .attr("y", yPosition)
-							// .attr("text-anchor", "middle")
-							// .attr("font-family", "sans-serif")
-							// .attr("font-size", "11px")
-							// .attr("font-weight", "bold")
-							// .attr("fill", "black")
-							// .text(d);
-
-						}).on("mouseout", function(d) {
-							d3.select(this)
-							.transition("restoreBarColor")
-							.duration(250)
-							.attr("fill", color);
-							// d3.select("#tooltip").remove();
-						});
-
-					   //Create labels
-						svg.selectAll("text")
-						   .data(dataset)
-						   .enter()
-						   .append("text")
-						   .text(function(d) {
-						   		return d.freshFruit;
-						   })
-						   .attr("text-anchor", "middle")
-						   .attr("x", function(d, i) {
-						   		return xScale(d.month) + xScale.bandwidth() / 2;
-						   })
-						   .attr("y", function(d) {
-						   		return  yScale(d.freshFruit) + 14;
-						   })
-						   .attr("font-family", "sans-serif")
-						   .attr("font-size", "11px")
-						   .attr("fill", "white")
-						   .style("pointer-events", "none");
-					  
-
-							//Define X axis
-							var xAxis = d3.axisBottom()
-											  .scale(xScale)
-											  .ticks(5);
-							//Define Y axis
-							var yAxis = d3.axisLeft()
-											  .scale(yScale)
-											  .ticks(5);
-
-
-
-						  	//Create X axis
-							svg.append("g")
-								.attr("class", "x axis")
-								.attr("transform", "translate(0," + height  + ")")
-								.call(xAxis);
-
-								svg.append("text")      // text label for the x axis
-							        .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
-							        .style("text-anchor", "middle")
-							        .text("Month");
-
-
-
-							svg.append("text")      // Title label
-						        .attr("transform", "translate(" + (width / 2) + " ," +  (0 - margin.top/2) + ")")
-						        .style("text-anchor", "middle")
-						        .attr("id","Title3")
-						        .text("NYC Green Markets - Unigue Types of Fresh Fruit");
-							
-							//Create Y axis
-							svg.append("g")
-								.attr("class", "y axis")
-								//.attr("transform", "translate(" + padding + ",0)")
-								.call(yAxis);
-
-							svg.append("text")
-						        .attr("transform", "rotate(-90)")
-						        .attr("y", (0 - margin.left) )
-						        .attr("x",0 - (height / 2))
-						        .attr("dy", "1em")
-						        .style("text-anchor", "middle")
-						        .text("Number of unique kind of produce");
-
-
-
-
-
-
-							d3.select("#but1")
-            				.on("click", function() {	
-
-            					yScale.domain([0, d3.max(dataset, function(d) { return d.freshFruit; })]);
-            					yAxis.scale(yScale);
-            					svg.select(".y").call(yAxis);
-
-            					color = "rgb(244, 66, 66)";
-
-
-
-            					svg.selectAll("rect")
-					            .data(dataset)
-					            .transition("change bars")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .attr("y", function(d) {
-					            return  yScale(d.freshFruit);
-					            })
-					            .attr("height", function(d) {
-					            return height-yScale(d.freshFruit);
-					            })
-					            .attr("fill", function(d) { // <-- Down here!
-					            return color;
-					            });
-
-					            svg.selectAll("text")
-					            .data(dataset)
-					            .transition("change numbers")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .text(function(d) {
-						   		return d.freshFruit;
-						   		})
-					            .attr("y", function(d) {
-							   		return  yScale(d.freshFruit) + 14;
-							   });
-
-					            svg.select("#Title3")
-					            .text("NYC Green Markets - Unigue Types of Fresh Fruit");
-            				});
-
-            				d3.select("#but2")
-            				.on("click", function() {	
-
-            					yScale.domain([0, d3.max(dataset, function(d) { return d.freshVegetable; })]);
-            					yAxis.scale(yScale);
-            					svg.select(".y").call(yAxis);
-
-            					color = "#4CAF50";
-
-            					svg.selectAll("rect")
-					            .data(dataset)
-					            .transition("change bars")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .attr("y", function(d) {
-					            return  yScale(d.freshVegetable);
-					            })
-					            .attr("height", function(d) {
-					            return height-yScale(d.freshVegetable);
-					            })
-					            .attr("fill", function(d) { // <-- Down here!
-					            return color;
-					            });
-					            svg.selectAll("text")
-					            .data(dataset)
-					            .transition("change numbers")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .text(function(d) {
-								   		return d.freshVegetable;
-								   })
-					            .attr("y", function(d) {
-							   		return  yScale(d.freshVegetable) + 14;
-							   });
-
-					            svg.select("#Title3")
-					            .text("NYC Green Markets - Unigue Types of Fresh Vegetables");
-            				});
-
-            				d3.select("#but3")
-            				.on("click", function() {	
-
-            					yScale.domain([0, d3.max(dataset, function(d) { return d.storageFruit; })]);
-            					yAxis.scale(yScale);
-            					svg.select(".y").call(yAxis);
-
-            					color = "#ef8181";
-
-            					svg.selectAll("rect")
-					            .data(dataset)
-					            .transition("change bars")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .attr("y", function(d) {
-					            return  yScale(d.storageFruit);
-					            })
-					            .attr("height", function(d) {
-					            return height-yScale(d.storageFruit);
-					            })
-					            .attr("fill", function(d) { // <-- Down here!
-					            return color;
-					            });
-					            svg.selectAll("text")
-					            .data(dataset)
-					            .transition("change numbers")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .text(function(d) {
-								   		return d.storageFruit;
-								   })
-					            .attr("y", function(d) {
-							   		return  yScale(d.storageFruit) + 14;
-							   });
-
-					            svg.select("#Title3")
-					            .text("NYC Green Markets - Unigue Types of Storage Fruit");
-            				});
-
-            				d3.select("#but4")
-            				.on("click", function() {	
-
-            					yScale.domain([0, d3.max(dataset, function(d) { return d.storageVegetable; })]);
-            					yAxis.scale(yScale);
-            					svg.select(".y").call(yAxis);
-
-            					color = "#9ce291";
-
-            					svg.selectAll("rect")
-					            .data(dataset)
-					            .transition("change bars")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .attr("y", function(d) {
-					            return  yScale(d.storageVegetable);
-					            })
-					            .attr("height", function(d) {
-					            return height-yScale(d.storageVegetable);
-					            })
-					            .attr("fill", function(d) { // <-- Down here!
-					            return color;
-					            });
-					            svg.selectAll("text")
-					            .data(dataset)
-					            .transition("change numbers")
-					            .delay(function(d, i) {
-					              return i * 100;
-					              })
-					            .duration(1000)
-					            .text(function(d) {
-								   		return d.storageVegetable;
-								   })
-					            .attr("y", function(d) {
-							   		return  yScale(d.storageVegetable) + 14;
-							   });
-
-					            svg.select("#Title3")
-					            .text("NYC Green Markets - Unigue Types of Storage Vegetables");
-            				});
-
-					});
-
-
-
-
-
-
-				</script>
-
-
-				<p>If you miss the month of September, you might be behind the fruit curve, but there are plenty more months of vegetables left. &nbsp;The chart shows that fresh vegetables are available 9 out of 12 months, but fruit is only available 5 out of 12. Now if only we could quantify how delicious the produce is&hellip;&nbsp;</p><p>&mdash;&ndash;</p><p>Data from:&nbsp;<a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.grownyc.org%2Fgreenmarket%2Fwhatsavailable&amp;t=MWU3YTNhNmYwMDJkNWUwNWQzOTUwMTZjMzJlMGNhM2E3YzdlNTIxMCwxeHM2a1phNg%3D%3D&amp;b=t%3A5jlxwUw4OZ-2SbgNDPgKMQ&amp;p=http%3A%2F%2Fiquantny.tumblr.com%2Fpost%2F129373499164%2Fthis-is-quantifiably-the-best-month-to-go-to-the&amp;m=1">http://www.grownyc.org/greenmarket/whatsavailable</a></p></p>
-
-		
-			<div class="Exercises" id = "part4">
-
-					<h2>Part 4: Viz 2</h2>
-					<p>Click on legend text in legend to change view of data. Hold mouse over datapoints to get more information.</p>
-				</div>
-			
-
-				<!-- Opgave 4 -->
-				<script type="text/javascript">
-				//Width and height
-					var w = 500;
-					var h = 400;
-					var padding = 60;
-					
-					var datasetf, datasetm, xScale, yScale, xAxis, yAxis, line;  //Empty, for now
-					var xPosition, yPosition;
-					var active_onlymen = 0;
-					var active_onlywomen = 0;
-					var formatTime = d3.timeFormat("%Y");
-
-					var rowConverter = function(d) {
-						return {
-							//Make a new Date object for each year + month
-							date: parseFloat(d.Year),
-							//Convert from string to float
-							finishtime: parseFloat(d.Finishtime)
-							};
-						}
-					//Load in data
-					d3.csv("dataman.csv", rowConverter, function(data) {
-						var datasetm = data;
-						d3.csv("datafem.csv", rowConverter, function(data) {
-							var datasetf = data;
-						
-							//Print data to console as table, for verification
-							console.table(datasetm, ["date", "finishtime"]);
-							console.table(datasetf, ["date", "finishtime"]);
-							//Create scale functions
-							xScale = d3.scaleLinear()
-										   .domain([
-												d3.min(datasetm , function(d) { return d.date-10; }),
-												d3.max(datasetm, function(d) { return d.date+10; })
-											])
-										   .range([padding, w]);
-							yScale = d3.scaleLinear()
-											.domain([120, d3.max(datasetf, function(d) { return d.finishtime+10; })])
-											.range([h - padding, padding]);
-							//Define axes
-							xAxis = d3.axisBottom()
-									   .scale(xScale)
-									   .ticks(5)
-									   .tickFormat(d3.format(""));
-							//Define Y axis
-							yAxis = d3.axisLeft()
-									   .scale(yScale)
-									   .ticks(5);
-
-							//Define line generator
-							line = d3.line()
-										.x(function(d) { return xScale(d.date); })
-										.y(function(d) { return yScale(d.finishtime); });
-
-
-							
-							
-							//Create SVG element
-							var svg = d3.select("#part4")
-										.append("svg")
-										.attr("width", w)
-										.attr("height", h);
-							
-							var div = d3.select("#part4")
-										.append("div")			
-									    .style("opacity", 0)
-									    .attr("class", "tooltip");
-
-							/////////////////////////////////////
-							///// Drawing stuff begins here /////
-							/////////////////////////////////////
-							
-							//Create scatterplot
-							// Draw circles
-						  	var circles = svg.selectAll('circle')
-						    	.data(datasetf)
-						      	.enter()
-						    	.append('circle')
-						      	.attr('cx',function (d) { return xScale(d.date) })
-						      	.attr('cy',function (d) { return yScale(d.finishtime) })
-						      	.attr('r',3)
-						      	.attr('stroke','black')
-						      	.attr('fill','white')
-						      	.attr('stroke-width',0.5)
-						      	.on('mouseover', function (d) {
-						        	d3.select(this)
-							          	.transition()
-							          	.duration(500)
-							          	.attr('r',6)
-							          	.attr('stroke-width',2);
-							        div.transition()		
-						                .duration(800)		
-						                .style("opacity", .9);		
-						            div	.html("Year " + d.date + "<br/>"  + d.finishtime + " min")	
-						                .style("left", (d3.event.pageX) + "px")		
-						                .style("top", (d3.event.pageY - 28) + "px")
-						                .attr("id","tooltool");
-
-
-						      	})
-						      	.on('mouseout', function (d) {
-						       		d3.select(this)
-						          	.transition()
-						          	.duration(500)
-						          	.attr('r',3)
-						          	.attr('stroke-width',0.5)
-						          	div.transition()		
-						                .duration(800)		
-						                .style("opacity", 0);
-						     	})
-						     	.attr("id","redcircles");
-
-						    // Draw rects
-						    var rects = svg.selectAll('rect')
-						    	.data(datasetm)
-						      	.enter()
-						    	.append('rect')
-						      	.attr('width',4)
-						      	.attr('height',4)
-						      	.attr('x',function (d) { return xScale(d.date)-4/2 })
-						      	.attr('y',function (d) { return yScale(d.finishtime)-4/2 })
-						      	.attr('stroke','black')
-						      	.attr('fill','white')
-						      	.attr('stroke-width',0.5)
-						      	.on('mouseover', function (d) {
-						        	d3.select(this)
-						          	.transition()
-						          	.duration(500)
-						          	.attr('width',8)
-						      		.attr('height',8)
-						      		.attr('x',function (d) { return xScale(d.date)-8/2 })
-						      		.attr('y',function (d) { return yScale(d.finishtime)-8/2 })
-						          	.attr('stroke-width',2)
-									
-									div.transition()		
-						                .duration(800)		
-						                .style("opacity", .9);		
-						            div	.html("Year " + d.date + "<br/>"  + d.finishtime + " min")	
-						                .style("left", (d3.event.pageX) + "px")		
-						                .style("top", (d3.event.pageY - 28) + "px")
-						                .attr("id","tooltool");
-						      	})
-						      	.on('mouseout', function (d) {
-						       		d3.select(this)
-							          	.transition()
-							          	.duration(500)
-							          	.attr('width',4)
-							      		.attr('height',4)
-							      		.attr('x',function (d) { return xScale(d.date)-4/2 })
-							      		.attr('y',function (d) { return yScale(d.finishtime)-4/2 })
-							          	.attr('stroke-width',0.5);
-						          	div.transition()		
-						                .duration(800)		
-						                .style("opacity", 0);	
-						          	//Remove the tooltip
-						     	})
-						     	.attr("id", "tealrects");
-
-						      
-
-							//Create paths
-							svg.append("path")
-								.datum(datasetm)
-								.attr("class", "linem")
-								.attr("d", line(datasetm))
-								.attr("id", "tealline");
-
-							svg.append("path")
-								.datum(datasetf)
-								.attr("class", "linef")
-								.attr("d", line)
-								.attr("id", "redline");
-
-							//Create lsq linefit
-							// plot(x,-0.9406*x+179.7377)
-
-		 					svg.append("line")
-		                    	.attr("x1", xScale(1966))
-		                        .attr("y1", yScale(179.7377))
-		                        .attr("x2", xScale(2017))
-		                        .attr("y2", yScale(131.7671))
-		                        .attr("stroke-width", 1.5)
-		                        .style("stroke-dasharray", ("3, 3"))
-		                        .attr("stroke", "red")
-		                        .attr("id","redlinefit");
-
-		                    //Create lsq linefit
-		                    // plot(x,-0.2917*x+159.43)
-		 					svg.append("line")
-		                    	.attr("x1", xScale(1897))
-		                        .attr("y1", yScale(159.43))
-		                        .attr("x2", xScale(2017))
-		                        .attr("y2", yScale(124.4260))
-		                        .attr("stroke-width", 1.5)
-		                        .style("stroke-dasharray", ("3, 3"))
-		                        .attr("stroke", "teal")
-		                        .attr("id", "teallinefit");
-
-							/////////////////////////////////////
-							///////// Axes begins here //////////
-							/////////////////////////////////////
-							svg.append("g")
-								.attr("class", "x axis")
-								.attr("transform", "translate(0," + (h - padding) + ")")
-								.call(xAxis);
-							svg.append("g")
-								.attr("class", "y axis")
-								.attr("transform", "translate(" + padding + ",0)")
-								.call(yAxis)
-							   .append("text")
-		      					.attr("transform", "rotate(-90)")
-		      					.attr("y", 6)
-							      .attr("dy", ".71em")
-							      .style("text-anchor", "end")
-							      .text("Winning time (Minutes)");
-							svg.append("g")
-								.attr("class", "y axis")
-								.attr("transform", "translate(" + (w-1) + ",0)")
-								.call(yAxis)
-								.selectAll("text")
-								.remove();
-							svg.append("g")
-								.attr("class", "x axis")
-								.attr("transform", "translate(0," + padding + ")")
-								.call(xAxis)
-								.selectAll("text")
-								.remove();
-
-							// Labels on axes!
-							svg.append("text")
-					            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-					            .attr("transform", "translate("+ (padding/3) +","+(h/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
-					            .text("Winning finishtime [Minutes]")
-					            .attr("font-size",13);
-
-		        			svg.append("text")
-					            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-					            .attr("transform", "translate("+ ((w+padding)/2) +","+(h-(padding/3))+")")  // centre below axis
-					            .text("Year")
-					            .attr("font-size",13);
-							
-							
-
-
-							/////////////////////////////////////
-							//// Long ass legend begins here ////
-							/////////////////////////////////////
-
-							svg.append("rect")
-								.attr('width',80)
-						      	.attr('height',50)
-						      	.attr('x',padding+5)
-						      	.attr('y',5*padding-15)
-						      	.attr('stroke','black')
-						      	.attr('fill','none')
-						      	.attr('stroke-width',0.5)
-
-							// Legend and update button (only women)
-							svg.append("text")
-								.attr("x", padding+16)             
-								.attr("y", 5*padding)    
-								.attr("class", "legend")
-								.attr("font-size",12)
-								.style("fill", "red")         
-								.on("click", function(){
-									// Determine if current line is visible
-									
-									newOpacity = 0;
-									active_onlywomen = 1;
-									newData = datasetf;
-
-									// Hide or show the elements
-									
-									xScale.domain([
-												d3.min(newData , function(d) { return d.date-10; }),
-												d3.max(newData, function(d) { return d.date+10; })
-											])
-										   .range([padding, w]);
-									yScale.domain([120, d3.max(newData, function(d) { return d.finishtime+10; })])
-											.range([h - padding, padding]);
-
-									// Update circles
-									svg.selectAll("circle")
-									   .data(newData)
-									   .transition()
-									   .duration(1000)		
-									   .attr("cx", function(d) {
-									   		return xScale(d.date);
-									   })
-									   .attr("cy", function(d) {
-									   		return yScale(d.finishtime);
-									   });
-
-									// Update path
-									svg.selectAll("#redline")
-										.transition()
-										.duration(1000)
-										.attr("d", line(newData));
-									// Update fit
-									svg.select("#redlinefit")
-										.transition()
-				                        .duration(1000)
-				                    	.attr("x1", xScale(1966))
-				                        .attr("y1", yScale(179.7377))
-				                        .attr("x2", xScale(2017))
-				                        .attr("y2", yScale(131.7671));
-				                 
-									//Update X axis
-									svg.select(".x.axis")
-						    			.transition()
-						    			.duration(1000)
-										.call(xAxis);
-									
-									//Update Y axis
-									svg.select(".y.axis")
-								    	.transition()
-								    	.duration(1000)
-										.call(yAxis);
-
-									d3.select("#tealline").transition().duration(1000).style("opacity", newOpacity);
-									d3.selectAll("#tealrects").transition().duration(1000).style("opacity", newOpacity);
-									d3.select("#teallinefit").transition().duration(1000).style("opacity", newOpacity);
-
-									if (active_onlymen == 1)
-									{
-										d3.select("#redline").transition().duration(1000).style("opacity", 1).attr("d", line(newData));
-										d3.selectAll("#redcircles").transition().duration(1000).style("opacity", 1).attr("cx", function(d) {
-									   		return xScale(d.date);
-									   })
-									   .attr("cy", function(d) {
-									   		return yScale(d.finishtime);
-									   });
-										d3.select("#redlinefit").transition().duration(1000).style("opacity", 1).attr("x1", xScale(1966))
-				                        .attr("y1", yScale(179.7377))
-				                        .attr("x2", xScale(2017))
-				                        .attr("y2", yScale(131.7671));
-									}
-								})
-								.text("Only women");
-
-							// Legend and update button (only men)
-							svg.append("text")
-								.attr("x", padding+16)             
-								.attr("y", 5*padding+15)    
-								.attr("class", "legend")
-								.attr("font-size",12)
-								.style("fill", "teal")         
-								.on("click", function(){
-									// Determine if current line is visible
-									
-									newOpacity = 0;
-									active_onlymen = 1;
-									newData = datasetm;
-
-									// Hide or show the elements
-									
-									xScale.domain([
-												d3.min(newData , function(d) { return d.date-10; }),
-												d3.max(newData, function(d) { return d.date+10; })
-											])
-										   .range([padding, w]);
-									yScale.domain([120, d3.max(newData, function(d) { return d.finishtime+10; })])
-											.range([h - padding, padding]);
-
-									// Update rects
-									svg.selectAll('rect')
-								    	.data(newData)
-								    	.transition()
-								      	.duration(1000)
-								      	.attr('x',function (d) { return xScale(d.date)-4/2 })
-								      	.attr('y',function (d) { return yScale(d.finishtime)-4/2 });
-								    
-
-
-									// Update path
-									svg.selectAll("#tealline")
-										.transition()
-										.duration(1000)
-										.attr("d", line(newData));
-									// Update fit
-									svg.select("#teallinefit")
-										.transition()
-				                        .duration(1000)
-				                    	.attr("x1", xScale(1897))
-				                        .attr("y1", yScale(159.43))
-				                        .attr("x2", xScale(2017))
-				                        .attr("y2", yScale(124.4260));
-				                 
-									//Update X axis
-									svg.select(".x.axis")
-						    			.transition()
-						    			.duration(1000)
-										.call(xAxis);
-									
-									//Update Y axis
-									svg.select(".y.axis")
-								    	.transition()
-								    	.duration(1000)
-										.call(yAxis);
-
-									// Opacity 0
-									d3.select("#redline").transition().duration(1000).style("opacity", newOpacity);
-									d3.selectAll("#redcircles").transition().duration(1000).style("opacity", newOpacity);
-									d3.select("#redlinefit").transition().duration(1000).style("opacity", newOpacity);
-
-									// Opacity 1
-									if (active_onlywomen == 1)
-									{
-										d3.select("#tealline").transition().duration(1000).style("opacity", 1).attr("d", line(newData));
-										d3.selectAll("#tealrects").transition().duration(1000).style("opacity", 1).attr('x',function (d) { return xScale(d.date)-4/2 })
-								      	.attr('y',function (d) { return yScale(d.finishtime)-4/2 });
-										d3.select("#teallinefit").transition().duration(1000).style("opacity", 1).attr("x1", xScale(1897))
-				                        .attr("y1", yScale(159.43))
-				                        .attr("x2", xScale(2017))
-				                        .attr("y2", yScale(124.4260));
-									}
-								})
-								.text("Only men");
-
-							// Legend and update button (ALL)
-							svg.append("text")
-								.attr("x", padding+16)             
-								.attr("y", 5*padding+30)    
-								.attr("class", "legend")
-								.attr("font-size",12)
-								.style("fill", "black")         
-								.on("click", function(){
-
-
-									// Update scales
-									xScale.domain([
-												d3.min(datasetm , function(d) { return d.date-10; }),
-												d3.max(datasetm, function(d) { return d.date+10; })
-											])
-										   .range([padding, w]);
-									yScale.domain([120, d3.max(datasetf, function(d) { return d.finishtime+10; })])
-											.range([h - padding, padding]);
-
-									// Update rects
-									svg.selectAll('rect')
-								    	.data(datasetm)
-								    	.transition()
-								      	.duration(1000)
-								      	.style("opacity", 1)
-								      	.attr('x',function (d) { return xScale(d.date)-4/2 })
-								      	.attr('y',function (d) { return yScale(d.finishtime)-4/2 });
-
-								    // Update circles
-								    svg.selectAll("circle")
-									   .data(datasetf)
-									   .transition()
-									   .duration(1000)
-									   .style("opacity", 1)	
-									   .attr("cx", function(d) {
-									   		return xScale(d.date);
-									   })
-									   .attr("cy", function(d) {
-									   		return yScale(d.finishtime);
-									   });
-								    
-
-
-									// Update paths
-									svg.selectAll("#tealline")
-										.transition()
-										.duration(1000)
-										.style("opacity", 1)
-										.attr("d", line(datasetm));
-									svg.selectAll("#redline")
-										.transition()
-										.duration(1000)
-										.style("opacity", 1)
-										.attr("d", line(datasetf));
-									// Update fits
-									svg.select("#teallinefit")
-										.transition()
-				                        .duration(1000)
-				                        .style("opacity", 1)
-				                    	.attr("x1", xScale(1897))
-				                        .attr("y1", yScale(159.43))
-				                        .attr("x2", xScale(2017))
-				                        .attr("y2", yScale(124.4260));
-				                    svg.select("#redlinefit")
-										.transition()
-				                        .duration(1000)
-				                        .style("opacity", 1)
-				                    	.attr("x1", xScale(1966))
-				                        .attr("y1", yScale(179.7377))
-				                        .attr("x2", xScale(2017))
-				                        .attr("y2", yScale(131.7671));
-				                 
-									//Update X axis
-									svg.select(".x.axis")
-						    			.transition()
-						    			.style("opacity", 1)
-						    			.duration(1000)
-										.call(xAxis);
-									
-									//Update Y axis
-									svg.select(".y.axis")
-								    	.transition()
-								    	.style("opacity", 1)
-								    	.duration(1000)
-										.call(yAxis);
-								})
-								.text("All data");
-
-							// Make some dots in the legend
-							svg.append("circle")
-								.attr('cx',padding+10)
-						      	.attr('cy',5*padding-4)
-						      	.attr('r',3)
-						      	.attr('stroke','red')
-						      	.attr('fill','red')
-						    svg.append("circle")
-								.attr('cx',padding+10)
-						      	.attr('cy',5*padding+11)
-						      	.attr('r',3)
-						      	.attr('stroke','teal')
-						      	.attr('fill','teal')
-
-
-						});
-					});
-				</script>
-				<p><b>Figure:</b> Winning times (in minutes) for the annual Boston marathon, seperately for men and women. Also shown are the straight-line approximations.</p>
-				<p>This is a recreation of DAOST figure 3-5, but with data from the Boston Marathon. It’s clear there’s a somewhat similiar trend compared with DAOST figure 3-5.</p>
-
-			</div>
-			<!-- <div class="Exercises">
-
-					<h1> Hej </h1>
-					<p>hej</p>
-
-			</div> -->
-	</body>
+              var taxiline = d3.line()
+              .x(function(d,i) { return x(i+1); })
+              .y(function(d,i) { return y(Number(agg[i].agg_yellow)); });
+
+
+              d3.csv("agg.csv", function(data) {
+                agg = data;
+                
+
+
+                svg.append("path")
+                .data([agg])
+                .attr("class", "taxiline")
+                .attr("d", taxiline);
+
+                svg.append("path")
+                .data([agg])
+                .attr("class", "uberline")
+                .attr("d", uberline);
+
+
+              })
+
+
+
+              var brush = d3.brushX()
+              .extent([[margin1.left, margin1.top -5], [w- margin1.right, h1 - margin1.bottom + 5 ]])
+                  .on("brush end", brushed);
+
+                  var legend = svg2.append("defs")
+                .append("svg:linearGradient")
+                .attr("id", "gradient")
+                .attr("x1", "100%")
+                .attr("y1", "100%")
+                .attr("x2", "100%")
+                .attr("y2", "0%")
+                .attr("spreadMethod", "pad");
+
+              legend.append("stop")
+                .attr("offset", "0%")
+                .attr("stop-color", "#ffe100")
+                .attr("stop-opacity", 1);
+
+              legend.append("stop")
+                .attr("offset", "15.855%")
+                .attr("stop-color", "#ffffff")
+                .attr("stop-opacity", 1);
+
+              
+
+              legend.append("stop")
+                .attr("offset", "100%")
+                .attr("stop-color", "#040bf9")
+                .attr("stop-opacity", 1);
+
+
+                svg2.append("rect")
+                .attr("width", 30)
+                .attr("height", 300)
+                .style("fill", "url(#gradient)")
+                .attr("transform", "translate(" + (w-margin2.right - 50) + ",200)");
+                        
+
+            
+
+              
+
+            
+              
+
+                
+          var xAxis = d3.axisBottom(xdate)
+            .tickFormat(d3.timeFormat("%B"));
+
+          var yAxis = d3.axisLeft(y)
+              .ticks(3);
+
+          var y2Axis = d3.axisRight(y2)
+            .ticks(3)
+
+          var legendAxis = d3.axisRight(procent)
+          .ticks(5)
+          .tickFormat(d3.format(".0%"));  
+
+
+              svg.append("g")
+                  .attr("transform", "translate(0," + (h1- margin1.bottom) + ")")
+                  .call(xAxis)
+                  .selectAll("text")  
+                    .style("text-anchor", "end")
+                    .attr("dx", "-.8em")
+                    .attr("dy", ".15em")
+                    .attr("transform", "rotate(-65)");
+                
+
+              svg.append("g")
+                  .call(yAxis)
+                  .attr("transform", "translate(" + margin1.left + ",  0)")
+                .append("text")
+                  .attr("fill", "#ffe100")
+                  .attr("y", 0)
+                  .attr("x",40)
+                  .attr("dy", "0.71em")
+                  .attr("font-size","15px")
+                  .attr("text-anchor", "end")
+                    .text("# of taxi trips");
+
+                   svg.append("g")
+                  .call(y2Axis)
+                  .attr("transform", "translate(" + (w - margin1.right ) + ",  0)")  
+                .append("text")
+                  .attr("fill", "#040bf9")
+                  .attr("y", 0)
+                  .attr("x", 30)
+                  .attr("dy", "0.71em")
+                  .attr("font-size","15px")
+                  .attr("text-anchor", "end")
+                    .text("# of uber trips");
+
+
+                    svg2.append("g")
+                  .call(legendAxis)
+                  .attr("transform", "translate(" +  (w-margin2.right - 20) + ",200)")  
+                .append("text")
+                  .attr("fill", "black")
+                  .attr("y", -20)
+                  .attr("x", 40)
+                  .attr("dy", "0.71em")
+                  .attr("font-size","12px")
+                  .attr("text-anchor", "end")
+                    .text("Legend");
+
+
+
+              
+
+
+
+            svg2.selectAll("path")
+           .data(json.features)
+           .enter()
+           .append("path")
+           .attr("d", path)
+           .attr('class', 'taxizone')
+           .style("stroke","black")
+           .style("fill", function(d,i) {
+            return heatmapColour(aggInt(5,20,uber,yellow)[i])});
+
+
+
+                  svg2.append("text")
+              .attr("y", 15 )
+                  .attr("x",(w/2))
+                  .attr("dy", "1em")
+                  .style("text-anchor", "middle")
+                  .text("NYC Boroughs")
+                  .attr("font-size",20);
+          
+          svg.append("g")
+                    .call(brush)
+                    .call(brush.move, [5, 20].map(x));
+
+            });
+
+
+            });
+
+              
+            
+             
+
+             
+
+            
+          });
+
+           
+          function aggInt(start,slut,data1,data2){
+            out1 =  new Array(263).fill(0);
+            out2 =  new Array(263).fill(0);
+
+            for (var i = Math.floor(start); i <= Math.ceil(slut); i++) {
+              
+              out1 = plus(out1, Object.values(data1[i-1]).map(Number));
+              //console.log(Object.values(data2[i-1]).map(Number));
+              out2 = plus(out2, Object.values(data2[i-1]).map(Number));
+             }
+
+              out1 = proc(out1,out2); 
+             return(out1)
+          }
+      
+    
+          function plus(AR1,AR2){
+            return( AR1.map(function(num,idx){
+              return( num + AR2[idx]);
+            }));
+          }
+
+          function divide(AR1,AR2){
+            return( AR1.map(function(num,idx){
+              return( num / AR2[idx]);
+            }));
+          }
+
+          function proc(agg_arr1,agg_arr2){
+            total = plus(agg_arr1,agg_arr2);
+            procent = divide(agg_arr1,total);
+
+            for (var i = 0; i < procent.length; i++) {
+              procent[i] = procent[i] || 0.1585518;
+            }
+            return(procent)
+
+          }
+
+          function brushed(){
+
+            var selection = d3.event.selection;
+
+                  if (selection !== null) {
+                      var e = d3.event.selection.map(x.invert, x);
+                     
+                      var test2 = svg2.selectAll(".taxizone");
+                      test2.style("fill", function(d,i) {
+                    return heatmapColour(aggInt(e[0], e[1],uber,yellow)[i])});
+                      
+
+                      
+                  }else {
+                    var test2 = svg2.selectAll(".taxizone");
+                    test2.style("fill", function(d,i) {
+                    return heatmapColour(aggInt(1, 181,uber,yellow)[i])});
+                  }
+
+
+          }
+        
+
+    </script>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-primary text-white mb-0" id="about">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-white">About</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+          <div class="col-lg-4 ml-auto">
+            <p class="lead">Did we catch your attention? For interested readers, a lot more information can be read on our explainer page. Learn about the dataset and the motivation for this project.</p>
+          </div>
+          <div class="col-lg-4 mr-auto">
+            <p class="lead">Wanna play around yourself? You can get our aggregated and our preproccessed data. You can even browse our code to see just how we did the amazing viz!</p>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a class="btn btn-xl btn-outline-light" href="/explainyourself/">
+            <i class="fa"></i>
+            Explainer page
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Location</h4>
+            <p class="lead mb-0">DTU Compute
+          </div>
+          <div class="col-md-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Around the Web</h4>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.youtube.com/watch?v=71LWziUEgU0">
+                  <i class="fa fa-fw fa-youtube"></i>
+                </a>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-uppercase mb-4">About The Course</h4>
+            <p class="lead mb-0">Take 02806 Social data analysis and visualization if you want to learn cool stuff like this!</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; 2018</small>
+      </div>
+    </div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
+
+  </body>
+
 </html>

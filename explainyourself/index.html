@@ -1,0 +1,92 @@
+<html>
+<head>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="title">
+    Explainer page
+   </div>
+   <div class="container" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="text">
+    <h2>Motivation</h2>
+    We decided to take a look in a big and competetive market that is the private transportation services provided by axis and ubers in New York City.<br><br>
+
+    Uber has received heavy criticism from multiple sources. A lot of the opposition is from taxi companies feeling unable to compete. But is Uber actually stealing customers from taxi companies or are they creating a new market? <br><br>
+
+    There's definitely many exicting questions to ask regarding transportation services in NYC, and that is the biggest reason why we chose this data.<br><br>
+
+    Our preprocessed data consists of 2 subdatasets, one for taxis and ubers. They consist of every single pickup with a timestamp and a taxizone location in a half-year period from January 1, 2015 to July 1, 2015. <br><br>
+
+    The <b>main goal</b> for the end user's experience was to make a simple and understandable visualization of a massive dataset. We want the user to be able to overview a complex and very large dataset.
+
+    The preprocessed data consists on average of more than 440,000 and 80,000 observations for taxis and ubers respectively each day! It is a huge amount. Therefore we reduced the time period to a half year, and aggregated each observation occuring on the same day and taxi zone. We quickly realised a geographical plot was not possible with exact pick up coordinates, and opted for a heatmap based on the 263 taxi zones instead. We also deleted any other column as payment options etc. were not relevant for our visualization<br><br>
+    The preprocessed data of size 538mb and 45 mb for taxi and uber respectively is reduced to two csv. file of size approximately 150kb each for both the taxi and uber dataset. As a part of our exploratory data analysis we found that in the entire half year period taxis dominate the market with 84% of all rides. This fact will become relevant our visualization.
+    <h2>Genre </h2>
+    The genre we chose is <b>Annotated Map</b>. It works the best here as we have access to geographical data and because the story we want to tell has location as one of its starting points. <br><br>
+    The tools we chose as a part of our <b>Visual Narrative</b> is
+    <ul>
+      <li>Consistent visual platform</li>
+      <li>Timebar</li>
+      <li>Feature distinction</li>
+      <li>Motion</li>
+      <li>Object continuity</li>
+      <li>Animated transistions</li>
+      </ul>
+      The reason behind these tools is powered by our main goal to make the user be able to easily overview a large dataset with geographic aspects.<br><br>
+
+    The tools we chose as a part of our <b>Narrative Structure</b> is
+    <ul>
+      <li>Linear ordering</li>
+      <li>Filtering</li>
+      <li>Headlines</li>
+    </ul>
+    The plotted data accompanied with a colorful legend speaks mostly for itself. The narrative is therefore relatively simple.
+    </ul>
+    <h2>Visualizations </h2>
+    We have chosen to map New York City divided into 263 officiel taxi zones. A user can select a time period in a halfyear interval and see the percentage of uber pickups out of the total number of rides (uber and taxi) in that given time period in each taxizone. As a neutral color a taxizone with an average distribution that matches the overall average of 16% is colored white. Everything below is colored yellow for taxi dominance and everything above as colored blue as uber rules there. <br><br>
+
+    Behind the visualization is an algorithm that takes the time interval as input and returns the uber percentage in every of the 263 taxizones. That is the algorithm aggregates the dataset each time a new time interval is selected. Even then the visualization is fairly smooth.<br><br>
+
+    This visualisation is the best for our data story, since it gives the user opportunity to understand the pickup frequency and location of ubers and taxis on a variable time scale. No other solution would have worked, since you cannot possibly plot over half a million dots for each day.
+    <h2>Discussion</h2>
+    As can be seen in our video our initial aspirations of this project was slighty modified upon taking a deep dive in the dataset. The dataset seemed far more massive than initially expected. Our visualization completes the task of getting a geographical aspect into the data story.<br><br>
+    Since our dataset is very large a lot of things could be added to make this data story more streamlined and well rounded. An interesting aspect is the distribution of rides on an average day. One could also investigate the tendency of growth for uber vs. taxi. How much rapidly does uber grow, and does the taxi industry decline? There are a lot of visualization that could have been added to make the data story more complete.<br><br>
+
+    There
+
+    <h2>Contributions </h2>
+    Aksel's main responsibilities:
+    <ul>
+      <li>Data search</li>
+      <li>Algorithm design (aggregation on the fly)</li>
+      <li>Webpage design and explainer page</li>
+    </ul>
+    
+    Jonas' main responsibilities: 
+    <ul>
+      <li>Data preprocessing and aggregation</li>
+      <li>D3 code and main visualization</li>
+    </ul>
+    <h2>Get the data</h2>
+    
+    <a href = "https://github.com/fivethirtyeight/uber-tlc-foil-response/raw/master/uber-trip-data/uber-raw-data-janjune-15.csv.zip"> Preprocessed Uber data </a><br>
+    <a href = "https://raw.githubusercontent.com/toddwschneider/nyc-taxi-data/master/analysis/2017_update/data/daily_trips_with_location_id.csv.gz"> Preprocessed Taxi data </a> <br><br>
+
+    <a href = "/uber.csv" download> Processed Uber data </a> <br>
+    <a href = "/yellow.csv" download> Processed Yellow Taxi data </a><br><br>
+    <a href="https://github.com/jonassvendsen/jonassvendsen.github.io">Github page</a>
+
+
+    </div>
+
+
+  </div>
+</body>
+</html>
